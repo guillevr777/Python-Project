@@ -4,12 +4,13 @@ import random
 cont = 0
 #Creamos una lista de 10 elementos inicializados a 0
 lista = [0]*10
-#Creamos una variable numero para guardar el numero aleatorio
-numero = 0
-#Bucle para rellenar la lista con numeros aleatorios entre 1 y 100
+
+#Bucle para rellenar la lista con numeros introducidos por teclado
 while cont < 10:
-    numero = random.randint(1,100)
+    numero = int(input("Dime un numero"))
     lista [cont] = numero
     cont += 1
-#Mostramos la lista
+
+#Ordenamos la lista y la mostramos por consola
+lista.sort()
 print(lista)
