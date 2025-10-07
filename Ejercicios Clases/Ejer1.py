@@ -1,7 +1,7 @@
 class CuentaCorriente:
     def __init__(self, dni, nombre, saldo):
         self.dni = dni
-        self.nombre = nombre
+        self.nombre = ""
         self.saldo = saldo
 
     def __init__(self, dni, saldo):
@@ -10,11 +10,11 @@ class CuentaCorriente:
         self.saldo = saldo
 
     def ingresarDinero(dinero):
-        self.saldo += dinero
+        saldo += dinero
 
     def retirarDinero(dinero):
-        if self.saldo >= dinero:
-            self.saldo -= dinero
+        if saldo >= dinero:
+            saldo -= dinero
         else:
             print("No hay suficiente saldo")
 
