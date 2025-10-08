@@ -32,4 +32,17 @@ class Libro :
         return "Nombre:" + self.titulo + " Autor:" + self.autor + " Cantidad:" + self.cantidad + " Prestados:" + self.prestados
     
     def __eq__(self, value):
+        correcto = False
+
+        if (self.titulo == value.titulo) :
+            correcto = True
         
+        return correcto
+    
+    def __lt__(self, value) :
+        correcto = False
+
+        if (self.autor < value.autor) :
+            correcto = True
+
+        return correcto
