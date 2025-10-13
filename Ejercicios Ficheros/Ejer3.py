@@ -1,0 +1,10 @@
+fichero = open('Ejercicios Ficheros/datos.txt', 'w', encoding='utf8')
+nombre = input("Introduce tu nombre: ")
+edad = input("Introduce tu edad: ")
+fichero.write(f"Nombre: {nombre} Edad: {edad}\n")
+fichero.close()
+fichero = open('Ejercicios Ficheros/datos.txt', 'r', encoding='utf8')
+lineas = fichero.readlines()
+for linea in lineas:
+    print(linea)
+fichero.close()

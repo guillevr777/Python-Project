@@ -11,6 +11,9 @@ class Empleado:
 
         return self.nombre
 
+    def __str__(self):
+        return f"Empleado {self.nombre}"
+
 class Operario(Empleado):
 
     def __init__(self, nombre):
@@ -23,6 +26,9 @@ class Operario(Empleado):
     def getNombre(self):
 
         return self.nombre
+    
+    def __str__(self):
+        return f"-> Operario "
 
 class Directivo(Empleado):
 
@@ -36,6 +42,9 @@ class Directivo(Empleado):
     def getNombre(self):
 
         return self.nombre
+    
+    def __str__(self):
+        return f"-> Directivo "
 
 class Oficial(Operario):
 
@@ -49,6 +58,9 @@ class Oficial(Operario):
     def getNombre(self):
 
         return self.nombre
+    
+    def __str__(self):
+        return f"-> Oficial "
 
 class Tecnico(Operario):
 
@@ -62,3 +74,6 @@ class Tecnico(Operario):
     def getNombre(self):
 
         return self.nombre
+    
+    def __str__(self):
+        return f"-> Técnico "
