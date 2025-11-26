@@ -1,0 +1,15 @@
+from routers import Movil, Persona, auth_users
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+app = FastAPI()
+
+# Routers
+app.include_router(Movil.router)
+app.include_router(Persona.router)
+app.include_router(auth_users.router)
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
+@app.get("/")
+def root():
+    return {"Hello": "World"}

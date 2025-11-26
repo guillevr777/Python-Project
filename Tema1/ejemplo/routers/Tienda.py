@@ -1,8 +1,8 @@
 #TIENDA (Id, Domicilio, Teléfono, PrecioAlquiler)
-from fastapi import FastAPI, HTTPException
+from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 
-app = FastAPI()
+router = APIRouter(prefix="/tienda", tags=["tienda"])
 
 class Tienda(BaseModel):
     id: int
@@ -21,49 +21,36 @@ tiendas_list = [
     Tienda(id=8, domicilio="Calle Río 11", telefono=999888777, precio_alquiler=2700.0)
 ]
 
-@app.get("/tiendas")
+@router.get("/tiendas")
 def tiendas():
     return tiendas_list
 
-@app.get("/tiendas/{id}")
+@router.get("/tiendas/{id}")
 def tienda_id(id: int):
-    tiendas = search_tienda(id)
-
-    if len(tiendas) != 0:
-        return tiendas[0]
-    raise HTTPException(status_code=404, detail="Tienda no encontrada")
-
-@app.post("/tiendas", status_code=201, response_model=Tienda)
-def add_tienda(tienda: Tienda):
-    tienda.id = next_id()
-    tiendas_list.append(tienda)
-    return tienda
-
-@app.put("/tiendas/{id}", response_model=Tienda)
-def modify_tienda(id: int, tienda: Tienda):
-    for index, saved_tienda in enumerate(tiendas_list):
-        if saved_tienda == id:
-            tienda.id = id
-            tiendas_list[index] = tienda
-            return tienda
-
-@app.delete("/tiendas/{id}", status_code=204)
-def delete_tienda(id: int):
-    for saved_tienda in tiendas_list:
-        if saved_tienda.id == id:
-            tiendas_list.remove(saved_tienda)
-            return {}
-    raise HTTPException(status_code=404, detail="Tienda no encontrada")
-
-def search_tienda(id: int):
-    tiendas = [tienda for tienda in tiendas_list if tienda.id == id]
+    tiendas = [tienda_id for tienda_id in tiendas_list if tienda_id.id == id]
 
     if len(tiendas) != 0:
         return tiendas[0]
     else:
-        return "Error: No se ha encontrado la tienda"
-    
-def next_id():
-    if tiendas_list:  # verifica que la lista no esté vacía
-        return max(tienda.id for tienda in tiendas_list) + 1
-    return 1    
+        raise HTTPException(status_code=404, detail="Tienda no encontrada")
+
+@router.delete("/tiendas/{id}")
+def eliminar_tienda(id: int):
+    for index, tienda in enumerate(tiendas_list):
+        if tienda.id == id:
+            del tiendas_list[index]
+            return {"message": "Tienda eliminada correctamente"}
+    raise HTTPException(status_code=404, detail="Tienda no encontrada")
+
+@router.post("/tiendas")
+def crear_tienda(tienda: Tienda):
+    tiendas_list.append(tienda)
+    return tienda
+
+@router.put("/tiendas/{id}")
+def actualizar_tienda(id: int, tienda_actualizada: Tienda):
+    for index, tienda in enumerate(tiendas_list):
+        if tienda.id == id:
+            tiendas_list[index] = tienda_actualizada
+            return tienda_actualizada
+    raise HTTPException(status_code=404, detail="Tienda no encontrada")
