@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "nombre": "Ana",
+    "apellidos": "López",
+    "fecha_nacimiento": "2004/03/07",
+    "curso": "primero",
+    "repetidor": true,
+    "id_colegio": "1"
+  },
+{
+    "id": "2",
+    "nombre": "Pepe",
+    "apellidos": "López",
+    "fecha_nacimiento": "2004/03/07",
+    "curso": "primero",
+    "repetidor": true,
+    "id_colegio": "1"
+  },
+{
+    "id": "3",
+    "nombre": "Jose",
+    "apellidos": "López",
+    "fecha_nacimiento": "2004/03/07",
+    "curso": "primero",
+    "repetidor": true,
+    "id_colegio": "1"
+  },
+{
+    "id": "4",
+    "nombre": "Lucas",
+    "apellidos": "López",
+    "fecha_nacimiento": "2004/03/07",
+    "curso": "primero",
+    "repetidor": true,
+    "id_colegio": "1"
+  }
+]

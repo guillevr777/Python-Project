@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "nombre": "Nervion",
+    "distrito": "Nervion",
+    "tipo": "publico",
+    "direccion": "calle Pirineos"
+  },
+{
+    "id": "2",
+    "nombre": "Luca",
+    "distrito": "Nervion",
+    "tipo": "publico",
+    "direccion": "calle Pirineos"
+  },
+{
+    "id": "3",
+    "nombre": "Tena",
+    "distrito": "Nervion",
+    "tipo": "publico",
+    "direccion": "calle Pirineos"
+  },
+{
+    "id": "4",
+    "nombre": "Rabioli",
+    "distrito": "Nervion",
+    "tipo": "publico",
+    "direccion": "calle Pirineos"
+  }
+]
