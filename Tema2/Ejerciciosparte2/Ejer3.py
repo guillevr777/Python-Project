@@ -51,23 +51,19 @@ def proceso_3():
 if __name__ == "__main__":
     inicio = time.time()
 
-    # Limpiar medias.txt si existe
     if os.path.exists("medias.txt"):
         os.remove("medias.txt")
 
-    # -------- PROCESO 1 --------
     ficheros = [f"Alumno{i}.txt" for i in range(1, 11)]
 
     with multiprocessing.Pool() as pool:
         pool.map(proceso_1, ficheros)
 
-    # -------- PROCESO 2 --------
     tareas = [(f"Alumno{i}.txt", f"Alumno{i}") for i in range(1, 11)]
 
     with multiprocessing.Pool() as pool:
         pool.map(proceso_2, tareas)
 
-    # -------- PROCESO 3 --------
     proceso_3()
 
     fin = time.time()

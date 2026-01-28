@@ -12,7 +12,7 @@ def contar_vocal(vocal, ruta_fichero):
     print(f"La vocal '{vocal}' aparece {contador} veces")
 
 if __name__ == "__main__":
-    ruta_fichero = "fichero1.txt"  # Fichero de texto a analizar
+    ruta_fichero = "fichero1.txt" 
     vocales = ["a", "e", "i", "o", "u"]
 
     procesos = []

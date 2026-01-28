@@ -24,7 +24,7 @@ def proceso_1(cola_salida):
     for _ in range(10):
         ip = generar_ip()
         cola_salida.put(ip)
-    cola_salida.put(None)  # Fin de datos
+    cola_salida.put(None) 
 
 
 def proceso_2(cola_entrada, cola_salida):
@@ -59,7 +59,6 @@ if __name__ == "__main__":
     p2 = multiprocessing.Process(target=proceso_2, args=(cola_1_2, cola_2_3))
     p3 = multiprocessing.Process(target=proceso_3, args=(cola_2_3,))
 
-    # Lanzar procesos en orden
     p1.start()
     p2.start()
     p3.start()

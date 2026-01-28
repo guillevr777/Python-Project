@@ -11,10 +11,9 @@ def proceso_1(ruta_fichero, año, cola_salida):
     with open(ruta_fichero, "r", encoding="utf-8") as f:
         for linea in f:
             nombre, año_pelicula = linea.strip().split(";")
-            if int(año_pelicula.strip()) == año:   # ← pequeño extra de seguridad
+            if int(año_pelicula.strip()) == año:
                 cola_salida.put(f"{nombre};{año_pelicula.strip()}")
 
-    # Señal de fin
     cola_salida.put(None)
 
 
@@ -23,7 +22,6 @@ def proceso_2(año, cola_entrada):
     Recibe películas y las guarda en el fichero peliculasXXXX.txt
     en la MISMA carpeta donde está el script.
     """
-    # 📌 Ruta absoluta de la carpeta del proyecto (donde está este .py)
     carpeta_proyecto = os.path.dirname(os.path.abspath(__file__))
 
     nombre_fichero = os.path.join(carpeta_proyecto, f"peliculas{año}.txt")
@@ -37,7 +35,6 @@ def proceso_2(año, cola_entrada):
 
 
 if __name__ == "__main__":
-    # -------- MAIN --------
     año_actual = datetime.datetime.now().year
 
     año = int(input("Introduce un año (menor que el actual): "))
